@@ -1,0 +1,95 @@
+from turtle import *
+
+# Pantalla
+setup(600, 500)
+bgcolor("white")
+speed(0)
+def marco():
+    penup()
+    goto(-200,-130)  # Esquina inferior izquierda
+    pendown()
+    pensize(4)
+    color("black")
+    for _ in range(2):
+        forward(420)   # Ancho del marco
+        left(90) #Angulo
+        forward(300)   # Alto del marco
+        left(90)
+    penup()
+def rect(x, y, width, height, color):
+    penup()
+    goto(x, y)
+    pendown()
+    fillcolor(color)
+    begin_fill()
+    for _ in range(2):
+        forward(width)
+        left(90)
+        forward(height)
+        left(90)
+    end_fill()
+#Letras Parkin
+def letras():
+    penup()
+    goto(-100, 120)
+    color("Black")
+    write("Estacionamiento", font=("Arial", 20, "bold"))
+
+# Cartel de estacionamiento
+def posteP():
+    # Poste
+    rect(-130, -120, 10, 150, "black")
+    
+    # Cartel
+    rect(-165, 10, 80, 80, "blue")
+    
+    # Letra "E"
+    penup()
+    goto(-145, 10)
+    color("white")
+    write("E", font=("Arial", 50, "bold"))
+def carro():
+    # Cuerpo del auto
+    rect(-70, -100, 140, 50, "blue3")
+    #Llantas
+    rect(-70,-120, 25, 20, "black")
+    rect(45,-120, 25, 20, "black")
+    #Espejos
+    rect(-60,-50,15,10,"blue3")
+    rect(45,-50,15,10,"blue3")
+    # Techo
+    penup()
+    goto(-50, -50)
+    pendown()
+    begin_fill()
+    fillcolor("azure4")
+    goto(-30, 0)
+    goto(30, 0)
+    goto(50, -50)
+    goto(-50, -50)
+    end_fill()
+
+    # Faros
+    rect(-60, -70, 20, 10, "white")
+    rect(40, -70, 20, 10, "white")
+
+    # Parrilla
+    rect(-30, -90, 60, 10, "black")
+    #Edificio
+    rect(80,-120,120,220,"blue3")
+    #Ventanas
+    rect(95,40,30,20,"azure4")
+    rect(155,40,30,20,"azure4")
+    rect(95,0,30,20,"azure4")
+    rect(155,0,30,20,"azure4")
+    rect(95,-40,30,20,"azure4")
+    rect(155,-40,30,20,"azure4")
+    rect(125,-120,30,50,"azure4")
+    
+posteP()
+carro()
+letras()
+marco()
+
+hideturtle()
+done()
