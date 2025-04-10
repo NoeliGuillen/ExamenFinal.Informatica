@@ -5,22 +5,21 @@ import random
 scene = canvas(title="Simulación Estacionamiento", width=800, height=600)
 scene.background = color.cyan
 
-piso = box(pos=vector(0, -0.3, 0), size=vector(50, 0.1, 37), color=color.gray(0.5))
+piso = box(pos=vector(0, -0.3, 0), size=vector(48, 0.1, 45), color=color.gray(0.5))
 
-poste = cylinder(pos=vector(14, -0.1, -12.5), axis=vector(0, 5, 0), radius=0.2, color=color.white)
-caja = box(pos=vector(14, 4, -12.5), size=vector(1, 2, 1), color=color.black)
-luz_roja = sphere(pos=vector(14, 4.5, -12), radius=0.2, color=color.gray(0.2))
-luz_verde = sphere(pos=vector(14, 3.5, -12), radius=0.2, color=color.green)
+poste = cylinder(pos=vector(10, -0.1, -12.5), axis=vector(0, 5, 0), radius=0.2, color=color.white)
+caja = box(pos=vector(10, 4, -12.5), size=vector(1, 2, 1), color=color.black)
+luz_roja = sphere(pos=vector(10, 4.5, -12), radius=0.2, color=color.gray(0.2))
+luz_verde = sphere(pos=vector(10, 3.5, -12), radius=0.2, color=color.green)
 
 # Barrera
-poste = cylinder(pos=vector(7, 0.1, -12), axis=vector(0, 2.5, 0), radius=0.2, color=color.white)
-pivot_barrera = vector(7, 1.5, -12)
+poste = cylinder(pos=vector(1, 0.1, -12), axis=vector(0, 2.5, 0), radius=0.2, color=color.white)
+pivot_barrera = vector(1, 1.5, -12)
 barrera = box(pos=pivot_barrera + vector(0, 2, 0), size=vector(0.5, 5, 0.5), color=color.yellow)
 barrera.rotation = 0  # Empieza arriba
 
 # Crear árboles
-# Crear árboles 
-tronco1 = cylinder(pos=vector(random.uniform(-12, -15), 0, random.uniform(12, 15)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
+tronco1 = cylinder(pos=vector(random.uniform(-12, -24), 0, random.uniform(12, 15)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
 hoja1_1 = sphere(pos=tronco1.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
 hoja1_2 = sphere(pos=tronco1.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
 hoja1_3 = sphere(pos=tronco1.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
@@ -32,25 +31,35 @@ hoja2_2 = sphere(pos=tronco2.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color
 hoja2_3 = sphere(pos=tronco2.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
 hoja2_4 = sphere(pos=tronco2.pos + vector(0, 4.3, 0), radius=0.9, color=color.green)
 
-tronco3 = cylinder(pos=vector(random.uniform(-12, -15), 0, random.uniform(-15, -12)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
+tronco3 = cylinder(pos=vector(random.uniform(-22, -15), 0, random.uniform(-15, -12)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
 hoja3_1 = sphere(pos=tronco3.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
 hoja3_2 = sphere(pos=tronco3.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
 hoja3_3 = sphere(pos=tronco3.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
 hoja3_4 = sphere(pos=tronco3.pos + vector(0, 4.3, 0), radius=0.9, color=color.green)
 
-tronco4 = cylinder(pos=vector(random.uniform(12, 15), 0, random.uniform(-15, -12)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
+tronco4 = cylinder(pos=vector(random.uniform(22, 15), 0, random.uniform(-15, -12)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
 hoja4_1 = sphere(pos=tronco4.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
 hoja4_2 = sphere(pos=tronco4.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
 hoja4_3 = sphere(pos=tronco4.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
 hoja4_4 = sphere(pos=tronco4.pos + vector(0, 4.3, 0), radius=0.9, color=color.green)
 
-tronco5 = cylinder(pos=vector(random.uniform(-18, -25), 0, random.uniform(-8, 8)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
+tronco5 = cylinder(pos=vector(random.uniform(-15, -30), 0, random.uniform(-8, 8)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
 hoja5_1 = sphere(pos=tronco5.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
 hoja5_2 = sphere(pos=tronco5.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
 hoja5_3 = sphere(pos=tronco5.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
 hoja5_4 = sphere(pos=tronco5.pos + vector(0, 4.3, 0), radius=0.9, color=color.green)
 
-tronco6 = cylinder(pos=vector(random.uniform(18, 25), 0, random.uniform(-8, 8)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
+
+tronco7 = cylinder(pos=vector(random.uniform(6, 22), 0, random.uniform(-8, 8)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
+hoja5_1 = sphere(pos=tronco7.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
+hoja5_2 = sphere(pos=tronco7.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
+hoja5_3 = sphere(pos=tronco7.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
+hoja5_4 = sphere(pos=tronco7.pos + vector(0, 4.3, 0), radius=0.9, color=color.green)
+
+
+
+
+tronco6 = cylinder(pos=vector(random.uniform(18, 30), 0, random.uniform(-8, 8)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
 hoja6_1 = sphere(pos=tronco6.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
 hoja6_2 = sphere(pos=tronco6.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
 hoja6_3 = sphere(pos=tronco6.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
@@ -83,6 +92,11 @@ crear_carro_estatico(vector(18, 0.5, 9), color.yellow)
 crear_carro_estatico(vector(18, 0.5, 4), color.blue)
 crear_carro_estatico(vector(18, 0.5, -2), color.cyan)
 crear_carro_estatico(vector(18, 0.5, -8), color.green)
+
+crear_carro_estatico(vector(6, 0.5, -2), color.yellow)
+crear_carro_estatico(vector(6, 0.5, -8), color.blue)
+
+crear_carro_estatico(vector(-9, 0.5, 15), color.yellow)
 
 # Carros móviles
 def crear_carro(pos_inicial):
@@ -184,7 +198,7 @@ def mover_carros():
             carro['estado'] = 'salida_final'
 
         elif carro['estado'] == 'salida_final':
-            if obj.pos.z < -:
+            if obj.pos.z < 25:
                 obj.pos.z += 0.1
                 for l in llantas:
                     l.pos.z += 0.1
@@ -203,7 +217,7 @@ while True:
 
     nuevo_carro_timer += 1
     if nuevo_carro_timer > 100 and len(carros) < max_carros and estado_semaforo == 'verde':
-        carros.append(crear_carro(vector(0, 0.5, -17)))
+        carros.append(crear_carro(vector(-1.5, 0.5, -17)))
         nuevo_carro_timer = 0
 
     if carros and carros[0]['estado'] == 'esperando' and estado_semaforo == 'verde':
@@ -215,4 +229,3 @@ while True:
     if barrera.rotation < 90 and (not carros or carros[0]['obj'].pos.z > -5):
         barrera.rotate(angle=radians(3), axis=vector(0, 0, 1), origin=pivot_barrera)
         barrera.rotation += 3
-
