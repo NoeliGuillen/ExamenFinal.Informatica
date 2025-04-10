@@ -99,6 +99,8 @@ crear_carro_estatico(vector(18, 0.5, 9), color.yellow)
 crear_carro_estatico(vector(18, 0.5, 4), color.blue)
 crear_carro_estatico(vector(18, 0.5, -2), color.cyan)
 crear_carro_estatico(vector(18, 0.5, -8), color.green)
+crear_carro_estatico(vector(6, 0.5, -2), color.cyan)
+crear_carro_estatico(vector(6, 0.5, -8), color.green)
 
 # Carros móviles
 def crear_carro(pos_inicial):
