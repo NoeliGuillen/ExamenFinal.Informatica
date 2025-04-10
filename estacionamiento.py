@@ -2,12 +2,10 @@ from vpython import *
 import time
 import random
 
-
 scene = canvas(title="Simulación Estacionamiento", width=800, height=600)
 scene.background = color.cyan
 
-piso = box(pos=vector(0, -0.3, 0), size=vector(50, 0.1,37), color=color.gray(0.5))
-
+piso = box(pos=vector(0, -0.3, 0), size=vector(50, 0.1, 37), color=color.gray(0.5))
 
 poste = cylinder(pos=vector(14, -0.1, -12.5), axis=vector(0, 5, 0), radius=0.2, color=color.white)
 caja = box(pos=vector(14, 4, -12.5), size=vector(1, 2, 1), color=color.black)
@@ -20,7 +18,7 @@ pivot_barrera = vector(7, 1.5, -12)
 barrera = box(pos=pivot_barrera + vector(0, 2, 0), size=vector(0.5, 5, 0.5), color=color.yellow)
 barrera.rotation = 0  # Empieza arriba
 
-
+# Crear árboles
 # Crear árboles 
 tronco1 = cylinder(pos=vector(random.uniform(-12, -15), 0, random.uniform(12, 15)), axis=vector(0, 3, 0), radius=0.3, color=color.red)
 hoja1_1 = sphere(pos=tronco1.pos + vector(0, 3.5, 0), radius=1.2, color=color.green)
@@ -57,20 +55,18 @@ hoja6_1 = sphere(pos=tronco6.pos + vector(0, 3.5, 0), radius=1.2, color=color.gr
 hoja6_2 = sphere(pos=tronco6.pos + vector(-0.7, 3.7, 0.5), radius=1, color=color.green)
 hoja6_3 = sphere(pos=tronco6.pos + vector(0.7, 3.7, -0.5), radius=1, color=color.green)
 hoja6_4 = sphere(pos=tronco6.pos + vector(0, 4.3, 0), radius=0.9, color=color.green)
-
 # Espacios de estacionamiento
-espacios = [vector(0, 0.25, 6 - i*4) for i in range(4)]  # Aumenté la distancia entre espacios
+espacios = [vector(0, 0.25, 6 - i * 4) for i in range(4)]  # Aumenté la distancia entre espacios
 ocupados = [False] * 4
 
-
 def crear_carro_estatico(pos, color_carro=color.blue):
-    cuerpo = box(pos=pos, size=vector(2, 1, 4), color=color_carro)
+    box(pos=pos, size=vector(2, 1, 4), color=color_carro)
     cylinder(pos=pos + vector(-1, -0.5, -1.2), axis=vector(0, 0.6, 0), radius=0.3, color=color.gray(0.5))  
     cylinder(pos=pos + vector(-1, -0.5, 1.2), axis=vector(0, 0.6, 0), radius=0.3, color=color.gray(0.5))  
     cylinder(pos=pos + vector(1, -0.5, -1.2), axis=vector(0, 0.6, 0), radius=0.3, color=color.gray(0.5))  
     cylinder(pos=pos + vector(1, -0.5, 1.2), axis=vector(0, 0.6, 0), radius=0.3, color=color.gray(0.5))  
 
-
+# Carros estáticos
 crear_carro_estatico(vector(-9, 0.5, 9), color.yellow)
 crear_carro_estatico(vector(-9, 0.5, 4), color.red)
 crear_carro_estatico(vector(-9, 0.5, -2), color.cyan)
@@ -188,7 +184,7 @@ def mover_carros():
             carro['estado'] = 'salida_final'
 
         elif carro['estado'] == 'salida_final':
-            if obj.pos.z < 10:
+            if obj.pos.z < -:
                 obj.pos.z += 0.1
                 for l in llantas:
                     l.pos.z += 0.1
@@ -207,10 +203,9 @@ while True:
 
     nuevo_carro_timer += 1
     if nuevo_carro_timer > 100 and len(carros) < max_carros and estado_semaforo == 'verde':
-        carros.append(crear_carro(vector(6, 0.5, -17)))
+        carros.append(crear_carro(vector(0, 0.5, -17)))
         nuevo_carro_timer = 0
 
-  
     if carros and carros[0]['estado'] == 'esperando' and estado_semaforo == 'verde':
         if barrera.rotation > 0:
             barrera.rotate(angle=radians(-3), axis=vector(0, 0, 1), origin=pivot_barrera)
@@ -219,3 +214,5 @@ while True:
     # Subir la barrera si el carro ya pasó
     if barrera.rotation < 90 and (not carros or carros[0]['obj'].pos.z > -5):
         barrera.rotate(angle=radians(3), axis=vector(0, 0, 1), origin=pivot_barrera)
+        barrera.rotation += 3
+
